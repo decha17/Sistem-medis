@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 
-public class cobasaja {
+public class medis {
     
     public static void main(String[] args) {
         String NamaObatA,NamaObatB,NamaObatC,NamaObatD,NamaObatE,NamaObatF,NamaObatG,NamaObatH;
