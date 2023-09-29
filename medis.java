@@ -1,17 +1,11 @@
-package medis;
-
 import java.util.Scanner;
 
-import javax.print.attribute.standard.MediaSize.NA;
-
-import java.util.Arrays;
-import java.util.ArrayList;
-
-
 public class medis {
-    
     public static void main(String[] args) {
-        String NamaObatA,NamaObatB,NamaObatC,NamaObatD,NamaObatE,NamaObatF,NamaObatG,NamaObatH;
+
+    Scanner sc = new Scanner(System.in);
+
+    String NamaObatA,NamaObatB,NamaObatC,NamaObatD,NamaObatE,NamaObatF,NamaObatG,NamaObatH;
         int obatA = 10000;
         int obatB = 11000;
         int obatC = 12000;
@@ -21,6 +15,30 @@ public class medis {
         int obatG = 16000;
         int obatH = 17000;
 
+        String keluhan,TanggalPeriksa, asalKota,Nama ;  
+
+        String User = "dimasadi" ;
+        String Pass = "dimasadi123";
+
+        int jmluang, jmlObat ,totalHargaObat ;
+
+        int namaDokter;
+
+        int menu,member,obat ;
+        int dokterA = 50000;
+        int dokterB = 40000;
+        int dokterC = 35000;
+        int dokterD = 100000;
+        int DokterA = 150000;
+        int DokterB = 200000;
+        int DokterC = 500000;
+
+        //nama dokter spesialis
+        String namaDokterSpA = "Gwido putra : " + DokterA ;
+        String namaDokterSpB = "Rizwan pratama : " + DokterB;
+        String namaDokterSpC = "Bayu dimas : " + DokterC;
+
+        //nama + harga obat
         NamaObatA= "gratazon : " + obatA; 
         NamaObatB = "paratusin : " + obatB;
         NamaObatC = "inamid : " + obatC;
@@ -30,66 +48,143 @@ public class medis {
         NamaObatG = "antibiotik : " + obatG;
         NamaObatH = "dekolgen : " + obatH;
 
-        int b,d,e,f,g,h;
-        int dokterA = 50000;
-        int dokterB = 40000;
-        int dokterC = 35000;
-        int dokterD = 100000;
+        //nama dokter umum
         String namaDokterA = "dr. Dita Rosita Marsudi Putri :" + dokterA;
         String namaDokterB = "dr. Novita Wahyu Rahmawaty : " + dokterB;
         String namaDokterC = "dr. Antonius ardijanto : " + dokterC;
         String namaDokterD = "dr. Ira Prasasti, MMRS : " + dokterD;
-        Scanner sc = new Scanner(System.in);
+
+        //menu pertama
         System.out.println("menu ");
         System.out.println("1. periksa");
         System.out.println("2. beli obat");
         System.out.print("pilih (1/2) : ");
-        int a =sc.nextInt();
-        
-        if (a==1) {
+        menu =sc.nextInt();
+
+        //apakah anda memiliki membership
+        if (menu == 1) {
             System.out.println("apakah anda memiliki membership");
             System.out.println("1. iyaa ");
             System.out.println("2. tidak ");
             System.out.print("pilih (1/2) : ");
-            b = sc.nextInt();
-            if (b == 1) {
+            member  = sc.nextInt();
+
+            //jika iya masukan username dan password membership
+            if (member == 1) {
                 System.out.println("Masukan username dan password");
                 System.out.print("Masukan Username :");
                 String Username = sc.next();
                 System.out.print("Masukan Password :");
                 String Password = sc.next();
-                String User = "dimasadi" ;
-                String Pass = "dimasadi123";
-
-                
-                if (Username.equals(User) && Password.equals(Pass) ) {
-                    System.out.println("Pilih dokter ");
+                if (Username.equals(User) && Password.equals(Pass)) {
+                    System.out.println("Pilih dokter spesialis atau umum");
+                    System.out.println("Dokter umum");
                     System.out.println("1. " + namaDokterA);
                     System.out.println("2. " + namaDokterB);
                     System.out.println("3. " + namaDokterC);
                     System.out.println("4. " + namaDokterD);
-                    System.out.println("Masukan pilihan anda : (1/2/3/4)");
-                    int c = sc.nextInt();
-                } 
-            }
-            if (b == 2) {
+                    System.out.println("Dokter Spesialis ");
+                    System.out.println("5. " + namaDokterSpA );
+                    System.out.println("6. " + namaDokterSpB );
+                    System.out.println("7. " + namaDokterSpC );
+                    System.out.println("Masukan pilihan anda : (1/2/3/4/5/6/7)");
+                    namaDokter = sc.nextInt();
+
+                    if (namaDokter == 1) {
+                        System.out.println("Dokter pilihan anda " + namaDokterA );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 2) {
+                        System.out.println("Dokter pilihan anda " + namaDokterB );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 3) {
+                        System.out.println("Dokter pilihan anda " + namaDokterC );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 4) {
+                        System.out.println("Dokter pilihan anda " + namaDokterD );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 5) {
+                        System.out.println("Dokter pilihan anda " + namaDokterSpA );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 6) {
+                        System.out.println("Dokter pilihan anda " + namaDokterSpB );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 7) {
+                        System.out.println("Dokter pilihan anda " + namaDokterSpC );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    }
+
+                } else {
+                    System.out.println("Username dan Password anda salah silahkan ulangi lagi");
+                }
+            } 
+            //masukan identitas
+            else if (member == 2) {
                 System.out.print("Masukan identitas ");
                 System.out.print("Masukan Nama : ");
-                String Nama = sc.next();
+                Nama = sc.next();
                 System.out.print("Masukan Umur : ");
                 String umur = sc.next();
                 System.out.print("Masukan Asal Kota : ");
-                String asalKota = sc.next();
+                asalKota = sc.next();
                 System.out.print("Masukan  Tanggal periksa : ");
-                String TanggalPeriksa = sc.next();
-                System.out.print("Masukan Keluhan : ");
-                String Keluhan = sc.next();
+                TanggalPeriksa = sc.next();
+                
+                System.out.println("Pilih dokter spesialis atau umum");
+                System.out.println("Dokter umum");
+                System.out.println("1. " + namaDokterA);
+                System.out.println("2. " + namaDokterB);
+                System.out.println("3. " + namaDokterC);
+                System.out.println("4. " + namaDokterD);
+                System.out.println("Dokter Spesialis ");
+                System.out.println("5. " + namaDokterSpA );
+                System.out.println("6. " + namaDokterSpB );
+                System.out.println("7. " + namaDokterSpC );
+                System.out.println("Masukan pilihan anda : (1/2/3/4/5/6/7)");
+                namaDokter = sc.nextInt();
+
+                if (namaDokter == 1) {
+                        System.out.println("Dokter pilihan anda " + namaDokterA );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 2) {
+                        System.out.println("Dokter pilihan anda " + namaDokterB );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 3) {
+                        System.out.println("Dokter pilihan anda " + namaDokterC );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 4) {
+                        System.out.println("Dokter pilihan anda " + namaDokterD );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 5) {
+                        System.out.println("Dokter pilihan anda " + namaDokterSpA );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 6) {
+                        System.out.println("Dokter pilihan anda " + namaDokterSpB );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    } else if (namaDokter == 7) {
+                        System.out.println("Dokter pilihan anda " + namaDokterSpC );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                    }
+
+            } else {
+                System.out.println("Input tidak dikenali");
             }
-        else {
-            System.out.println("Input tidak dikenali");
-        }
-        } else if (a==2) {
-        System.out.println("pilihlah obat yg ingin anda beli ");
+            
+        } else if (menu == 2) {
+            System.out.println("pilihlah obat yg ingin anda beli ");
         System.out.println("1. " +NamaObatA );
         System.out.println("2. " +NamaObatB);
         System.out.println("3. " +NamaObatC);
@@ -99,10 +194,10 @@ public class medis {
         System.out.println("7. " +NamaObatG);
         System.out.println("8. " +NamaObatH);
         System.out.println("Masukan pilihan obat anda : (1/2/3/4/5/6/7/8)");
-        int obat = sc.nextInt();
+        obat = sc.nextInt();
         System.out.println("Masukan jumlah obat yang ingin anda beli : ");
-        int jmlObat = sc.nextInt();
-        int totalHargaObat ;
+        jmlObat = sc.nextInt();
+
         if (obat == 1) {
             totalHargaObat = obatA*jmlObat;
             System.out.println("total harga yang anda bayar : " + totalHargaObat);
@@ -127,11 +222,11 @@ public class medis {
         } else if (obat == 8) {
             totalHargaObat = obatH*jmlObat;
             System.out.println("total harga yang anda bayar : " + totalHargaObat);
-        
-    }{
         }
-    } else {
-        System.out.println("Input tidak diketahui");
+        } else {
+            System.out.println("input tidak di kenali");
+        } {
+            
+        }
     }
-}
 }
