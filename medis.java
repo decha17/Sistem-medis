@@ -1,43 +1,44 @@
 import java.util.Scanner;
 
-public class medis {
+public class Medis {
     public static void main(String[] args) {
 
     Scanner sc = new Scanner(System.in);
 
     String NamaObatA,NamaObatB,NamaObatC,NamaObatD,NamaObatE,NamaObatF,NamaObatG,NamaObatH;
-        int obatA = 10000;
-        int obatB = 11000;
-        int obatC = 12000;
-        int obatD = 13000;
-        int obatE = 14000;
-        int obatF = 15000;
-        int obatG = 16000;
-        int obatH = 17000;
+        double obatA = 10000;
+        double obatB = 11000;
+        double obatC = 12000;
+        double obatD = 13000;
+        double obatE = 14000;
+        double obatF = 15000;
+        double obatG = 16000;
+        double obatH = 17000;
+        
+        String demam = "demam" ,pilek = "pilek" ,flu = "flu";
 
         String keluhan,TanggalPeriksa, asalKota,Nama ;  
-
+        
         String User = "dimasadi" ;
         String Pass = "dimasadi123";
-
-        int jmluang, jmlObat ,totalHargaObat ;
-
+        
+        double jmluang, jmlObat ,totalHargaObat, totalBayar, diskonMember,obat ;
         int namaDokter;
-
-        int menu,member,obat ;
-        int dokterA = 50000;
-        int dokterB = 40000;
-        int dokterC = 35000;
-        int dokterD = 100000;
-        int DokterA = 150000;
-        int DokterB = 200000;
-        int DokterC = 500000;
-
+        
+        int menu,member ;
+        double dokterA = 50000;
+        double dokterB = 40000;
+        double dokterC = 35000;
+        double dokterD = 100000;
+        double DokterA = 150000;
+        double DokterB = 200000;
+        double DokterC = 500000;
+        
         //nama dokter spesialis
         String namaDokterSpA = "Gwido putra : " + DokterA ;
         String namaDokterSpB = "Rizwan pratama : " + DokterB;
         String namaDokterSpC = "Bayu dimas : " + DokterC;
-
+        
         //nama + harga obat
         NamaObatA= "gratazon : " + obatA; 
         NamaObatB = "paratusin : " + obatB;
@@ -47,12 +48,14 @@ public class medis {
         NamaObatF = "paracetamol : " + obatF;
         NamaObatG = "antibiotik : " + obatG;
         NamaObatH = "dekolgen : " + obatH;
-
+        
         //nama dokter umum
         String namaDokterA = "dr. Dita Rosita Marsudi Putri :" + dokterA;
         String namaDokterB = "dr. Novita Wahyu Rahmawaty : " + dokterB;
         String namaDokterC = "dr. Antonius ardijanto : " + dokterC;
         String namaDokterD = "dr. Ira Prasasti, MMRS : " + dokterD;
+        
+
 
         //menu pertama
         System.out.println("menu ");
@@ -60,7 +63,7 @@ public class medis {
         System.out.println("2. beli obat");
         System.out.print("pilih (1/2) : ");
         menu =sc.nextInt();
-
+        
         //apakah anda memiliki membership
         if (menu == 1) {
             System.out.println("apakah anda memiliki membership");
@@ -94,30 +97,101 @@ public class medis {
                         System.out.println("Dokter pilihan anda " + namaDokterA );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + dokterA ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            diskonMember = jmluang - (totalBayar * 0.8);
+                            System.out.println("Kembalian anda  " + diskonMember );
+                                                        
+                        }
                     } else if (namaDokter == 2) {
                         System.out.println("Dokter pilihan anda " + namaDokterB );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + dokterB ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            diskonMember = jmluang - (totalBayar * 0.8);
+                            System.out.println("Kembalian anda  " + diskonMember );
+                                                        
+                        }
                     } else if (namaDokter == 3) {
                         System.out.println("Dokter pilihan anda " + namaDokterC );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + dokterC ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            diskonMember = jmluang - (totalBayar * 0.8);
+                            System.out.println("Kembalian anda  " + diskonMember );
+                                                        
+                        }
                     } else if (namaDokter == 4) {
                         System.out.println("Dokter pilihan anda " + namaDokterD );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + dokterD ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            diskonMember = jmluang - (totalBayar * 0.8);
+                            System.out.println("Kembalian anda  " + diskonMember );
+                                                        
+                        }
                     } else if (namaDokter == 5) {
                         System.out.println("Dokter pilihan anda " + namaDokterSpA );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + DokterA ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            diskonMember = jmluang - (totalBayar * 0.8);
+                            System.out.println("Kembalian anda  " + diskonMember );
+                                                        
+                        }
                     } else if (namaDokter == 6) {
                         System.out.println("Dokter pilihan anda " + namaDokterSpB );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + DokterB ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            diskonMember = jmluang - (totalBayar * 0.8);
+                            System.out.println("Kembalian anda  " + diskonMember );
+                                                        
+                        }
                     } else if (namaDokter == 7) {
                         System.out.println("Dokter pilihan anda " + namaDokterSpC );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + DokterC ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            diskonMember = jmluang - (totalBayar * 0.8);
+                            System.out.println("Kembalian anda  " + diskonMember );
+                                                        
+                        }
                     }
 
                 } else {
@@ -153,30 +227,94 @@ public class medis {
                         System.out.println("Dokter pilihan anda " + namaDokterA );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + dokterA ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            System.out.println("Kembalian anda  " + (jmluang - totalBayar));
+                                                        
+                        }
                     } else if (namaDokter == 2) {
                         System.out.println("Dokter pilihan anda " + namaDokterB );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + dokterB ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            System.out.println("Kembalian anda  " + (jmluang - totalBayar));
+                                                        
+                        }
                     } else if (namaDokter == 3) {
                         System.out.println("Dokter pilihan anda " + namaDokterC );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + dokterC ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            System.out.println("Kembalian anda  " + (jmluang - totalBayar));
+                                                        
+                        }
                     } else if (namaDokter == 4) {
                         System.out.println("Dokter pilihan anda " + namaDokterD );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + dokterD ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            System.out.println("Kembalian anda  " + (jmluang - totalBayar));
+                                                        
+                        }
                     } else if (namaDokter == 5) {
                         System.out.println("Dokter pilihan anda " + namaDokterSpA );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + DokterA ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            System.out.println("Kembalian anda  " + (jmluang - totalBayar));
+                                                        
+                        }
                     } else if (namaDokter == 6) {
                         System.out.println("Dokter pilihan anda " + namaDokterSpB );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + DokterB ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            System.out.println("Kembalian anda  " + (jmluang - totalBayar));
+                                                        
+                        }
                     } else if (namaDokter == 7) {
                         System.out.println("Dokter pilihan anda " + namaDokterSpC );
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                            totalBayar = obatA + DokterC ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            System.out.println("Kembalian anda  " + (jmluang - totalBayar));
+                                                        
+                        }
                     }
 
             } else {
