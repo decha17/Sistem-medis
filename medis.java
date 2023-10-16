@@ -280,8 +280,26 @@ public class medis {
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
                                 jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                                                        
+                                totalBayar = jmluang - totalBayar;
+                                System.out.println("Kembalian anda  " + totalBayar);
+                                System.out.println("Apakah anda punya asuransi : ");
+                                System.out.println("1. ya");
+                                System.out.println("2. tidak");
+                                System.out.print("Masukan pilihan anda : ");
+                                PunyaAsuransi = sc.nextInt();
+
+                                if (PunyaAsuransi == 1) {
+                                do {
+                                   
+                                    System.out.print("Masukan ID asuransi :"); 
+                                    asuransi = sc.next();
+                                    
+                                        System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                        System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalBayar );
+                                        TotaldiskAsuransi = totalBayar * DiskAsuransi;
+                                        System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                } while (!asuransi.equals(IDasuransi));
+                            }                            
                         }
                             break;
                         
@@ -295,8 +313,26 @@ public class medis {
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
                                 jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                                                        
+                                totalBayar = jmluang - totalBayar;
+                                System.out.println("Kembalian anda  " + totalBayar);
+                                System.out.println("Apakah anda punya asuransi : ");
+                                System.out.println("1. ya");
+                                System.out.println("2. tidak");
+                                System.out.print("Masukan pilihan anda : ");
+                                PunyaAsuransi = sc.nextInt();
+
+                                if (PunyaAsuransi == 1) {
+                                do {
+                                   
+                                    System.out.print("Masukan ID asuransi :"); 
+                                    asuransi = sc.next();
+                                    
+                                        System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                        System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalBayar );
+                                        TotaldiskAsuransi = totalBayar * DiskAsuransi;
+                                        System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                } while (!asuransi.equals(IDasuransi));
+                            }                            
                         }
                             break;
 
