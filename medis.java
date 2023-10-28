@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Medis {
+public class medis {
     public static void main(String[] args) {
 
     Scanner sc = new Scanner(System.in);
@@ -21,7 +21,7 @@ public class Medis {
 
         String keluhan,TanggalPeriksa, asalKota,Nama ;  
         
-        double jmluang, jmlObat ,totalHargaObat, totalBayar, diskonMember,obat ;
+        double jmluang, jmlObat ,totalHargaObat, totalBayar, diskonMember,kembalian, obat,totalDiskMember,TotaldiskAsuransi ;
         int namadokter;
         
         int menu,member ;
@@ -56,13 +56,16 @@ public class Medis {
         NamaObatF = "paracetamol : " + obatF;
         NamaObatG = "antibiotik : " + obatG;
         NamaObatH = "dekolgen : " + obatH;
-        
-        
+        //user dan password member
         String Username,Password;
         String User1 = "dimas123";
         String Pass1 = "dms12";
-
-
+        //asuransi
+        int PunyaAsuransi;
+        String IDasuransi = "234172";
+        String asuransi;
+        double DiskAsuransi = 0.65; 
+        double DiskMember = 0.8;
         //menu pertama
         System.out.println("menu ");
         System.out.println("1. periksa");
@@ -104,121 +107,270 @@ public class Medis {
 
                     switch (namadokter) {
                         case 1:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
-                            System.out.print("Masukan keluhan anda : ");
-                            keluhan = sc.next();
-                            if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
-                                totalBayar = obatA + dokterA ;
-                                System.out.println("Total yang harus anda bayar : " + totalBayar );
-                                System.out.println("Masukan jumlah uang anda ");
-                                jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                            } else if (keluhan.equalsIgnoreCase(pilek)) {
-                                System.out.println("diagnosa dokter : " + pilek + " Obat yang disarankan : " + NamaObatA  );
-                                totalBayar = obatA + dokterA ;
-                                System.out.println("Total yang harus anda bayar : " + totalBayar );
-                                System.out.println("Masukan jumlah uang anda ");
-                                jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                            }
-                            break;
-                        
+                        System.out.println("Dokter pilihan anda " + namaDokter[0] );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
+                            totalBayar = obatA + dokterA ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            totalDiskMember = totalBayar * DiskMember;
+                            kembalian = jmluang - totalDiskMember;
+                            System.out.println("Kembalian anda  " + kembalian);
+                            System.out.println("Apakah anda punya asuransi : ");
+                            System.out.println("1. ya");
+                            System.out.println("2. tidak");
+                            System.out.print("Masukan pilihan anda : ");
+                            PunyaAsuransi = sc.nextInt();
+
+                            if (PunyaAsuransi == 1) {
+                            do {
+                               
+                                System.out.print("Masukan ID asuransi :"); 
+                                asuransi = sc.next();
+                                
+                                    System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                    System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalDiskMember );
+                                    TotaldiskAsuransi = totalDiskMember * DiskAsuransi;
+                                    System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                    System.out.println("Masukan jumlah uang anda : ");
+                                    jmluang = sc.nextInt();
+                                    kembalian = jmluang - TotaldiskAsuransi;
+                                    System.out.println("Kembalian anda : " + kembalian);
+                            } while (!asuransi.equals(IDasuransi));
+                        }                            
+                    }
+                        break;
+
                         case 2:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
-                            System.out.print("Masukan keluhan anda : ");
-                            keluhan = sc.next();
-                            if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
-                                totalBayar = obatA + dokterA ;
-                                System.out.println("Total yang harus anda bayar : " + totalBayar );
-                                System.out.println("Masukan jumlah uang anda ");
-                                jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                                                        
-                        }
-                            break;
-                        
+                        System.out.println("Dokter pilihan anda " + namaDokter[2] );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
+                            totalBayar = obatA + dokterA ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            totalDiskMember = totalBayar * DiskMember;
+                            kembalian = jmluang - totalDiskMember;
+                            System.out.println("Kembalian anda  " + kembalian);
+                            System.out.println("Apakah anda punya asuransi : ");
+                            System.out.println("1. ya");
+                            System.out.println("2. tidak");
+                            System.out.print("Masukan pilihan anda : ");
+                            PunyaAsuransi = sc.nextInt();
+
+                            if (PunyaAsuransi == 1) {
+                            do {
+                               
+                                System.out.print("Masukan ID asuransi :"); 
+                                asuransi = sc.next();
+                                
+                                    System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                    System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalDiskMember );
+                                    TotaldiskAsuransi = totalDiskMember * DiskAsuransi;
+                                    System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                    System.out.println("Masukan jumlah uang anda : ");
+                                    jmluang = sc.nextInt();
+                                    kembalian = jmluang - TotaldiskAsuransi;
+                                    System.out.println("Kembalian anda : " + kembalian);
+                            } while (!asuransi.equals(IDasuransi));
+                        }                            
+                    }
                         case 3:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
-                            System.out.print("Masukan keluhan anda : ");
-                            keluhan = sc.next();
-                            if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
-                                totalBayar = obatA + dokterA ;
-                                System.out.println("Total yang harus anda bayar : " + totalBayar );
-                                System.out.println("Masukan jumlah uang anda ");
-                                jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                                                        
-                        }
+                        System.out.println("Dokter pilihan anda " + namaDokter[2] );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
+                            totalBayar = obatA + dokterA ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            totalDiskMember = totalBayar * DiskMember;
+                            kembalian = jmluang - totalDiskMember;
+                            System.out.println("Kembalian anda  " + kembalian);
+                            System.out.println("Apakah anda punya asuransi : ");
+                            System.out.println("1. ya");
+                            System.out.println("2. tidak");
+                            System.out.print("Masukan pilihan anda : ");
+                            PunyaAsuransi = sc.nextInt();
+
+                            if (PunyaAsuransi == 1) {
+                            do {
+                               
+                                System.out.print("Masukan ID asuransi :"); 
+                                asuransi = sc.next();
+                                
+                                    System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                    System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalDiskMember );
+                                    TotaldiskAsuransi = totalDiskMember * DiskAsuransi;
+                                    System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                    System.out.println("Masukan jumlah uang anda : ");
+                                    jmluang = sc.nextInt();
+                                    kembalian = jmluang - TotaldiskAsuransi;
+                                    System.out.println("Kembalian anda : " + kembalian);
+                            } while (!asuransi.equals(IDasuransi));
+                        }                            
+                    }
                             break;
 
                         case 4:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
-                            System.out.print("Masukan keluhan anda : ");
-                            keluhan = sc.next();
-                            if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
-                                totalBayar = obatA + dokterA ;
-                                System.out.println("Total yang harus anda bayar : " + totalBayar );
-                                System.out.println("Masukan jumlah uang anda ");
-                                jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                                                        
-                        }
+                        System.out.println("Dokter pilihan anda " + namaDokter[3] );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
+                            totalBayar = obatA + dokterA ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            totalDiskMember = totalBayar * DiskMember;
+                            kembalian = jmluang - totalDiskMember;
+                            System.out.println("Kembalian anda  " + kembalian);
+                            System.out.println("Apakah anda punya asuransi : ");
+                            System.out.println("1. ya");
+                            System.out.println("2. tidak");
+                            System.out.print("Masukan pilihan anda : ");
+                            PunyaAsuransi = sc.nextInt();
+
+                            if (PunyaAsuransi == 1) {
+                            do {
+                               
+                                System.out.print("Masukan ID asuransi :"); 
+                                asuransi = sc.next();
+                                
+                                    System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                    System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalDiskMember );
+                                    TotaldiskAsuransi = totalDiskMember * DiskAsuransi;
+                                    System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                    System.out.println("Masukan jumlah uang anda : ");
+                                    jmluang = sc.nextInt();
+                                    kembalian = jmluang - TotaldiskAsuransi;
+                                    System.out.println("Kembalian anda : " + kembalian);
+                            } while (!asuransi.equals(IDasuransi));
+                        }                            
+                    }
                             break;
 
                         case 5:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
-                            System.out.print("Masukan keluhan anda : ");
-                            keluhan = sc.next();
-                            if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
-                                totalBayar = obatA + dokterA ;
-                                System.out.println("Total yang harus anda bayar : " + totalBayar );
-                                System.out.println("Masukan jumlah uang anda ");
-                                jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                                                        
-                        }
+                        System.out.println("Dokter pilihan anda " + namaDokter[4] );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
+                            totalBayar = obatA + dokterA ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            totalDiskMember = totalBayar * DiskMember;
+                            kembalian = jmluang - totalDiskMember;
+                            System.out.println("Kembalian anda  " + kembalian);
+                            System.out.println("Apakah anda punya asuransi : ");
+                            System.out.println("1. ya");
+                            System.out.println("2. tidak");
+                            System.out.print("Masukan pilihan anda : ");
+                            PunyaAsuransi = sc.nextInt();
+
+                            if (PunyaAsuransi == 1) {
+                            do {
+                               
+                                System.out.print("Masukan ID asuransi :"); 
+                                asuransi = sc.next();
+                                
+                                    System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                    System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalDiskMember );
+                                    TotaldiskAsuransi = totalDiskMember * DiskAsuransi;
+                                    System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                    System.out.println("Masukan jumlah uang anda : ");
+                                    jmluang = sc.nextInt();
+                                    kembalian = jmluang - TotaldiskAsuransi;
+                                    System.out.println("Kembalian anda : " + kembalian);
+                            } while (!asuransi.equals(IDasuransi));
+                        }                            
+                    }
                             break;
 
                         case 6:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
-                            System.out.print("Masukan keluhan anda : ");
-                            keluhan = sc.next();
-                            if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
-                                totalBayar = obatA + dokterA ;
-                                System.out.println("Total yang harus anda bayar : " + totalBayar );
-                                System.out.println("Masukan jumlah uang anda ");
-                                jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                                                        
-                        }
+                        System.out.println("Dokter pilihan anda " + namaDokter[5] );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
+                            totalBayar = obatA + dokterA ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            totalDiskMember = totalBayar * DiskMember;
+                            kembalian = jmluang - totalDiskMember;
+                            System.out.println("Kembalian anda  " + kembalian);
+                            System.out.println("Apakah anda punya asuransi : ");
+                            System.out.println("1. ya");
+                            System.out.println("2. tidak");
+                            System.out.print("Masukan pilihan anda : ");
+                            PunyaAsuransi = sc.nextInt();
+
+                            if (PunyaAsuransi == 1) {
+                            do {
+                               
+                                System.out.print("Masukan ID asuransi :"); 
+                                asuransi = sc.next();
+                                
+                                    System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                    System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalDiskMember );
+                                    TotaldiskAsuransi = totalDiskMember * DiskAsuransi;
+                                    System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                    System.out.println("Masukan jumlah uang anda : ");
+                                    jmluang = sc.nextInt();
+                                    kembalian = jmluang - TotaldiskAsuransi;
+                                    System.out.println("Kembalian anda : " + kembalian);
+                            } while (!asuransi.equals(IDasuransi));
+                        }                            
+                    }
                             break;
 
                         case 7:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
-                            System.out.print("Masukan keluhan anda : ");
-                            keluhan = sc.next();
-                            if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
-                                totalBayar = obatA + dokterA ;
-                                System.out.println("Total yang harus anda bayar : " + totalBayar );
-                                System.out.println("Masukan jumlah uang anda ");
-                                jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                                                        
-                        }
-                            break;
+                        System.out.println("Dokter pilihan anda " + namaDokter[6] );
+                        System.out.print("Masukan keluhan anda : ");
+                        keluhan = sc.next();
+                        if (keluhan.equals(demam) ) {
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
+                            totalBayar = obatA + dokterA ;
+                            System.out.println("Total yang harus anda bayar : " + totalBayar );
+                            System.out.println("Masukan jumlah uang anda ");
+                            jmluang = sc.nextInt();
+                            totalDiskMember = totalBayar * DiskMember;
+                            kembalian = jmluang - totalDiskMember;
+                            System.out.println("Kembalian anda  " + kembalian);
+                            System.out.println("Apakah anda punya asuransi : ");
+                            System.out.println("1. ya");
+                            System.out.println("2. tidak");
+                            System.out.print("Masukan pilihan anda : ");
+                            PunyaAsuransi = sc.nextInt();
 
-                        default:
-                            System.out.println("Dokter yang anda pilih tidak ada");
-                            break;
+                            if (PunyaAsuransi == 1) {
+                            do {
+                               
+                                System.out.print("Masukan ID asuransi :"); 
+                                asuransi = sc.next();
+                                
+                                    System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                    System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalDiskMember );
+                                    TotaldiskAsuransi = totalDiskMember * DiskAsuransi;
+                                    System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                    System.out.println("Masukan jumlah uang anda : ");
+                                    jmluang = sc.nextInt();
+                                    kembalian = jmluang - TotaldiskAsuransi;
+                                    System.out.println("Kembalian anda : " + kembalian);
+                            } while (!asuransi.equals(IDasuransi));
+                        }                            
                     }
-                    break;
+                            break;
+                        }
+                        break;
 
                 case 2:
                     System.out.print("Masukan identitas ");
@@ -250,52 +402,106 @@ public class Medis {
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
                                 jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                                                        
+                                totalBayar = jmluang - totalBayar;
+                                System.out.println("Kembalian anda  " + totalBayar);
+                                System.out.println("Apakah anda punya asuransi : ");
+                                System.out.println("1. ya");
+                                System.out.println("2. tidak");
+                                System.out.print("Masukan pilihan anda : ");
+                                PunyaAsuransi = sc.nextInt();
+
+                                if (PunyaAsuransi == 1) {
+                                do {
+                                   
+                                    System.out.print("Masukan ID asuransi :"); 
+                                    asuransi = sc.next();
+                                    
+                                        System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                        System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalBayar );
+                                        TotaldiskAsuransi = totalBayar * DiskAsuransi;
+                                        System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                } while (!asuransi.equals(IDasuransi));
+                            }                            
                         }
                             break;
                         
                         case 2:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
+                            System.out.println("Dokter pilihan anda " + namaDokter[1] );
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
                                 jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                                                        
+                                totalBayar = jmluang - totalBayar;
+                                System.out.println("Kembalian anda  " + totalBayar);
+                                System.out.println("Apakah anda punya asuransi : ");
+                                System.out.println("1. ya");
+                                System.out.println("2. tidak");
+                                System.out.print("Masukan pilihan anda : ");
+                                PunyaAsuransi = sc.nextInt();
+
+                                if (PunyaAsuransi == 1) {
+                                do {
+                                   
+                                    System.out.print("Masukan ID asuransi :"); 
+                                    asuransi = sc.next();
+                                    
+                                        System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                        System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalBayar );
+                                        TotaldiskAsuransi = totalBayar * DiskAsuransi;
+                                        System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                } while (!asuransi.equals(IDasuransi));
+                            }                            
                         }
                             break;
                         
                         case 3:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
+                            System.out.println("Dokter pilihan anda " + namaDokter[2] );
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
                                 jmluang = sc.nextInt();
-                                System.out.println("Kembalian anda  " + (jmluang - totalBayar));
-                                                        
+                                totalBayar = jmluang - totalBayar;
+                                System.out.println("Kembalian anda  " + totalBayar);
+                                System.out.println("Apakah anda punya asuransi : ");
+                                System.out.println("1. ya");
+                                System.out.println("2. tidak");
+                                System.out.print("Masukan pilihan anda : ");
+                                PunyaAsuransi = sc.nextInt();
+
+                                if (PunyaAsuransi == 1) {
+                                do {
+                                   
+                                    System.out.print("Masukan ID asuransi :"); 
+                                    asuransi = sc.next();
+                                    
+                                        System.out.println("Anda mendapatkan potongan sebesar 35% ");
+                                        System.out.println("Total yang harus anda bayar sebelum di kurangi asuransi : " + totalBayar );
+                                        TotaldiskAsuransi = totalBayar * DiskAsuransi;
+                                        System.out.println("Total yang harus di bayar setelah dikurangi asuransi : " + TotaldiskAsuransi);
+                                } while (!asuransi.equals(IDasuransi));
+                            }                            
                         }
                             break;
 
                         case 4:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
+                            System.out.println("Dokter pilihan anda " + namaDokter[3] );
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
@@ -306,11 +512,11 @@ public class Medis {
                             break;
 
                         case 5:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
+                            System.out.println("Dokter pilihan anda " + namaDokter[4] );
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
@@ -321,11 +527,11 @@ public class Medis {
                             break;
 
                         case 6:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
+                            System.out.println("Dokter pilihan anda " + namaDokter[5] );
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
@@ -336,11 +542,11 @@ public class Medis {
                             break;
 
                         case 7:
-                            System.out.println("Dokter pilihan anda " + namaDokter[0] );
+                            System.out.println("Dokter pilihan anda " + namaDokter[6] );
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : " + demam + " Obat yang disarankan : " + NamaObatA  );
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                totalBayar = obatA + dokterA ;
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
