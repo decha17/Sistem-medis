@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class backupa1 {
+public class medis {
     public static void main(String[] args) {
 
     Scanner sc = new Scanner(System.in);
