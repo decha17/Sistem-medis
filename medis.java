@@ -4,10 +4,15 @@ public class medis {
     public static void main(String[] args) {
 
     Scanner sc = new Scanner(System.in);
-
+        // nama dokter umum
         String[] namaDokter = {"dr. Dita Rosita Marsudi Putri", "dr. Novita Wahyu Rahmawaty", "dr. Antonius ardijanto", "dr. Ira Prasasti, MMRS"};
+        // nama dokter spesialis
         String[] namaDokterSp = {"Gwido putra", "Rizwan pratama" , "Bayu dimas" };
-        String NamaObatA,NamaObatB,NamaObatC,NamaObatD,NamaObatE,NamaObatF,NamaObatG,NamaObatH;
+        // nama obat
+        String[] NamaObat = {"Grathazon", "Paratusin", "Inamid", "Promaag", "Panadol", "Paracetamol", "Decolgen", "Ambeven", "Cataflam"};
+        // nama keluhan
+        String [] Keluhan = {"Radang" , "Flu", "Sakit perut", "Maag" , "Pusing", "Demam", "Pilek", "Wasir", "Sakit gigi"};
+        // harga obat
         double obatA = 10000;
         double obatB = 11000;
         double obatC = 12000;
@@ -16,15 +21,15 @@ public class medis {
         double obatF = 15000;
         double obatG = 16000;
         double obatH = 17000;
+        double obatI = 95000;
         
         String demam = "demam" ,pilek = "pilek" ,flu = "flu";
 
         String keluhan,TanggalPeriksa, asalKota,Nama ;  
         
         double jmluang, jmlObat ,totalHargaObat, totalBayar, diskonMember,kembalian, obat,totalDiskMember,TotaldiskAsuransi ;
-        int namadokter;
-        
-        int menu,member ;
+
+        int menu,member,namadokter ;
         //Harga dokter umum
         double dokterA = 50000;
         double dokterB = 40000;
@@ -39,7 +44,7 @@ public class medis {
         //nama dokter umum
         namaDokter[0] = "dr. Dita Rosita Marsudi Putri :" + dokterA;
         namaDokter[1] = "dr. Novita Wahyu Rahmawaty : " + dokterB;
-        namaDokterSp[0] = "dr. Antonius ardijanto : " + dokterC;
+        namaDokter[2] = "dr. Antonius ardijanto : " + dokterC;
         namaDokter[3] = "dr. Ira Prasasti, MMRS : " + dokterD;
 
         //nama dokter spesialis
@@ -48,14 +53,15 @@ public class medis {
         namaDokterSp[2] = "Bayu dimas : " + DokterC;
         
         //nama + harga obat
-        NamaObatA= "gratazon : " + obatA; 
-        NamaObatB = "paratusin : " + obatB;
-        NamaObatC = "inamid : " + obatC;
-        NamaObatD = "promaag : " + obatD;
-        NamaObatE = "panadol : " + obatE;
-        NamaObatF = "paracetamol : " + obatF;
-        NamaObatG = "antibiotik : " + obatG;
-        NamaObatH = "dekolgen : " + obatH;
+        NamaObat[0]= "gratazon : " + obatA; 
+        NamaObat[1] = "paratusin : " + obatB;
+        NamaObat[2] = "inamid : " + obatC;
+        NamaObat[3] = "promaag : " + obatD;
+        NamaObat[4] = "panadol : " + obatE;
+        NamaObat[5] = "paracetamol : " + obatF;
+        NamaObat[6] = "dekolgen : " + obatG;
+        NamaObat[7] = "ambeven : " + obatH;
+        NamaObat[8] = "cataflam : " + obatI; 
         //user dan password member
         String Username,Password;
         String User1 = "dimas123";
@@ -66,6 +72,12 @@ public class medis {
         String asuransi;
         double DiskAsuransi = 0.65; 
         double DiskMember = 0.8;
+
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("--- Selamat Datang di Platfrom Klinik sederhana ---");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
         //menu pertama
         System.out.println("menu ");
         System.out.println("1. periksa");
@@ -109,7 +121,7 @@ public class medis {
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
                         if (keluhan.equals(demam) ) {
-                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                                
                             totalBayar = obatA + dokterA ;
                             System.out.println("Total yang harus anda bayar : " + totalBayar );
                             System.out.println("Masukan jumlah uang anda ");
@@ -147,7 +159,7 @@ public class medis {
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
                         if (keluhan.equals(demam) ) {
-                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                               
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                               
                             totalBayar = obatA + dokterA ;
                             System.out.println("Total yang harus anda bayar : " + totalBayar );
                             System.out.println("Masukan jumlah uang anda ");
@@ -185,7 +197,7 @@ public class medis {
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
                         if (keluhan.equals(demam) ) {
-                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                                
                             totalBayar = obatA + dokterA ;
                             System.out.println("Total yang harus anda bayar : " + totalBayar );
                             System.out.println("Masukan jumlah uang anda ");
@@ -223,7 +235,7 @@ public class medis {
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
                         if (keluhan.equals(demam) ) {
-                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                               
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                               
                             totalBayar = obatA + dokterA ;
                             System.out.println("Total yang harus anda bayar : " + totalBayar );
                             System.out.println("Masukan jumlah uang anda ");
@@ -261,7 +273,7 @@ public class medis {
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
                         if (keluhan.equals(demam) ) {
-                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                               
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                               
                             totalBayar = obatA + dokterA ;
                             System.out.println("Total yang harus anda bayar : " + totalBayar );
                             System.out.println("Masukan jumlah uang anda ");
@@ -299,7 +311,7 @@ public class medis {
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
                         if (keluhan.equals(demam) ) {
-                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                                
                             totalBayar = obatA + dokterA ;
                             System.out.println("Total yang harus anda bayar : " + totalBayar );
                             System.out.println("Masukan jumlah uang anda ");
@@ -337,7 +349,7 @@ public class medis {
                         System.out.print("Masukan keluhan anda : ");
                         keluhan = sc.next();
                         if (keluhan.equals(demam) ) {
-                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                
+                            System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                                
                             totalBayar = obatA + dokterA ;
                             System.out.println("Total yang harus anda bayar : " + totalBayar );
                             System.out.println("Masukan jumlah uang anda ");
@@ -402,7 +414,7 @@ public class medis {
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                               
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                               
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
@@ -435,7 +447,7 @@ public class medis {
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                               
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                               
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
@@ -468,7 +480,7 @@ public class medis {
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                                
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                                
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
@@ -501,7 +513,7 @@ public class medis {
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                               
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                               
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
@@ -534,7 +546,7 @@ public class medis {
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                              
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                              
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
@@ -567,7 +579,7 @@ public class medis {
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                               
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                               
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
@@ -600,7 +612,7 @@ public class medis {
                             System.out.print("Masukan keluhan anda : ");
                             keluhan = sc.next();
                             if (keluhan.equals(demam) ) {
-                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObatA  );                               
+                                System.out.println("diagnosa dokter : demam" + " Obat yang disarankan : " + NamaObat[0]  );                               
                                 totalBayar = obatA + dokterA ;
                                 System.out.println("Total yang harus anda bayar : " + totalBayar );
                                 System.out.println("Masukan jumlah uang anda ");
@@ -634,22 +646,24 @@ public class medis {
                 break;
             case 2:
             System.out.println("pilihlah obat yg ingin anda beli ");
-            System.out.println("1. " +NamaObatA );
-            System.out.println("2. " +NamaObatB);
-            System.out.println("3. " +NamaObatC);
-            System.out.println("4. " +NamaObatD);
-            System.out.println("5. " +NamaObatE);
-            System.out.println("6. " +NamaObatF);
-            System.out.println("7. " +NamaObatG);
-            System.out.println("8. " +NamaObatH);
-            System.out.println("Masukan pilihan obat anda : (1/2/3/4/5/6/7/8)");
+            System.out.println("1. " +NamaObat[0] );
+            System.out.println("2. " +NamaObat[1]);
+            System.out.println("3. " +NamaObat[2]);
+            System.out.println("4. " +NamaObat[3]);
+            System.out.println("5. " +NamaObat[4]);
+            System.out.println("6. " +NamaObat[5]);
+            System.out.println("7. " +NamaObat[6]);
+            System.out.println("8. " +NamaObat[7]);
+            System.out.println("9. " +NamaObat[8]);
+            System.out.println("(1/2/3/4/5/6/7/8/9)");
+            System.out.print("Masukan pilihan obat anda : ");
             obat = sc.nextInt();
-            System.out.println("Masukan jumlah obat yang ingin anda beli : ");
+            System.out.print("Masukan jumlah obat yang ingin anda beli : ");
             jmlObat = sc.nextInt();
     
             if (obat == 1) {
                 totalHargaObat = obatA*jmlObat;
-                System.out.println("total harga yang anda bayar : " + totalHargaObat);
+                System.out.println("total harga yang anda bayar : " + totalHargaObat);    
             } else if (obat == 2) {
                 totalHargaObat = obatB*jmlObat;
                 System.out.println("total harga yang anda bayar : " + totalHargaObat);
@@ -671,14 +685,15 @@ public class medis {
             } else if (obat == 8) {
                 totalHargaObat = obatH*jmlObat;
                 System.out.println("total harga yang anda bayar : " + totalHargaObat);
+            }  else if (obat == 9) {
+                totalHargaObat = obatI*jmlObat;
+                System.out.println("total harga yang anda bayar : " + totalHargaObat);
             }
                 break;
             default:
                 System.out.println("Inputan anda salah");
                 break;
         }
-    
-            
         }
     }
 
