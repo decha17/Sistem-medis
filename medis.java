@@ -25,17 +25,15 @@ public class medis {
         {150000, 200000, 500000}
     };
 
+    static String[] Keluhan = {"Radang", "Flu", "Sakit perut", "Maag", "Pusing", "Demam", "Pilek", "Wasir", "Sakit gigi", "Batuk"};
     static String[] namaObat = {"Grathazon", "Paratusin", "Inamid", "Promaag", "Panadol", "Paracetamol", "Decolgen", "Ambeven", "Cataflam", "OBH"};
     static double[] hargaObat = {10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 95000, 30000};
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String[] Keluhan = {"Radang", "Flu", "Sakit perut", "Maag", "Pusing", "Demam", "Pilek", "Wasir", "Sakit gigi", "Batuk"};
 
-        String radang = "radang", flu = "flu", sakitPerut = "Sakit Perut", maag = "Maag", pusing = "Pusing", demam = "demam", pilek = "pilek", wasir = "Wasir", sakitGigi = "Sakit Gigi", batuk = "Batuk";
-
-        String keluhan, TanggalPeriksa, asalKota, Nama;
+        String TanggalPeriksa, asalKota, Nama;
 
         int menu, member, attempts = 0;
 
@@ -66,7 +64,8 @@ public class medis {
         System.out.println("Menu : ");
         System.out.println("1. Periksa/Konsultasi");
         System.out.println("2. Beli Obat");
-        System.out.println("Masukkan pilihan (1/2)");
+        System.out.println("3. Informasi penyakit dengan obat dan harganya");
+        System.out.println("Masukkan pilihan (1/2/3)");
         menu = sc.nextInt();
         
         if (menu == 1) {
@@ -74,6 +73,8 @@ public class medis {
             periksa(dokterIndex); 
         } else if (menu == 2) {
             bobat();
+        } else if (menu == 3) {
+            informasi(sc);
         }
 
 
@@ -112,6 +113,14 @@ public class medis {
             if (sc.next().equalsIgnoreCase("t")) {
             }
         }
+
+        public static void informasi(Scanner sc) {    
+            System.out.println("Informasi penyakit dan obatnya: ");
+            for (int i = 0; i < namaObat.length; i++) {
+                System.out.println((i + 1) + ". " + Keluhan[i] + " = " + namaObat[i] + " Rp." + hargaObat[i]);
+            }
+        }
+    
     
 
     static int member(Scanner sc) {
