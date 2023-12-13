@@ -296,12 +296,15 @@ public class medis {
         }
 
         return userIndex;
+
     }
+
     public static void tampilkanRiwayatPeriksa() {
         System.out.println("\nRiwayat Periksa:");
         for (String info : riwayatPeriksa) {
             if (info != null) {
                 System.out.println(info);
+                System.out.println("");
             }
         }
     }
