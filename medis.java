@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class medis {
@@ -6,12 +5,10 @@ public class medis {
         Scanner sc = new Scanner(System.in);
         System.out.println("");
         double kembalian = 0;
-
         if (isMember) {
             hargaBayar = hargaBayar * 0.7;
             System.out.println("Anda adalah member, mendapatkan diskon 30%");
         }
-
         System.out.println("Total Harga yang Harus anda Bayar adalah : " + hargaBayar);
         System.out.print("Masukan Jumlah uang : ");
         double jmlUangPeriksa = sc.nextDouble();
@@ -19,29 +16,25 @@ public class medis {
         return kembalian;
     }
 
-     static double hitungKembalianObat(double totalHarga, boolean isMember) {
+    static double hitungKembalianObat(double totalHarga, boolean isMember) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("");
-        double kembalian = 0;
-
+        double kembaliObat = 0;
         if (isMember) {
             totalHarga = totalHarga * 0.7;
             System.out.println("Anda adalah member, mendapatkan diskon 30%");
         }
-
         System.out.println("Total Harga yang Harus anda Bayar adalah : " + totalHarga);
         System.out.print("Masukan Jumlah uang : ");
-        double jmlUangPeriksa = sc.nextDouble();
-        kembalian = jmlUangPeriksa - totalHarga;
-        return kembalian;
+        double jmlUangObat = sc.nextDouble();
+        kembaliObat = jmlUangObat - totalHarga;
+        return kembaliObat;
     }
 
-
- 
 
     static final int MAX_ATTEMPTS = 3;
     static final String[] username = {"dimas123", "wantod20k", "gwido19"};
     static final String[] password = {"dms12", "wan20k", "gwd19"};
+    private static final boolean isMember = false;
 
     static String[][] namaDokter = {
         {"dr. Dita Rosita Marsudi Putri", "dr. Novita Wahyu Rahmawaty", "dr. Antonius ardijanto", "dr. Ira Prasasti, MMRS"},
@@ -56,7 +49,9 @@ public class medis {
     static String[] Keluhan = {"Radang", "Flu", "diare", "Maag", "Pusing", "Demam", "Pilek", "Wasir", "Sakit gigi", "Batuk","Masuk Angin"  };
     static String[] namaObat = {"Grathazon", "Paratusin", "Inamid", "Promaag", "Panadol", "Paracetamol", "Decolgen", "Ambeven", "Cataflam", "OBH combi", "Enzyplex" };
     static double[] hargaObat = {10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 95000, 30000, 10000};
+    static String[] riwayatObat = new String[100];
     static String[] riwayatPeriksa = new String[100];
+    static int jumlahRiwayatObat = 0;
 
 
 
@@ -65,7 +60,7 @@ public class medis {
         
 
         Scanner sc = new Scanner(System.in);
-        String keluhan, TanggalPeriksa, asalKota, Nama;
+        String keluhan, TanggalPeriksa, Nama;
 
         int menu, member, attempts = 0;
 
@@ -103,7 +98,7 @@ public class medis {
         System.out.println("1. Periksa/Konsultasi");
         System.out.println("2. Beli Obat");
         System.out.println("3. Informasi penyakit dengan obat dan harganya");
-        System.out.println("4. Tampilkan Riwayat Periksa");
+        System.out.println("4. Tampilkan riwayat periksa dan riwayat pembelian obat");
         System.out.println("Masukkan pilihan (1/2/3/4)");   
         menu = sc.nextInt();
         System.out.println("");
@@ -114,13 +109,16 @@ public class medis {
             double kembalianPeriksa = hitungKembalianPeriksa(hargaBayar, isMember);
             System.out.println("Kembalian anda : " + kembalianPeriksa);
         }  else if (menu == 2) {
-            bobat(sc);
-            double kembalianObat = hitungKembalianObat(bobat(sc), isMember);
-            System.out.println("Kembalian anda : " + kembalianObat);
+            double totalHarga = bobat(sc);
+            double kembaliObat = hitungKembalianObat(totalHarga, isMember);
+            System.out.println("Kembalian anda : " + kembaliObat);
         } else if (menu == 3) {
             informasi(sc);
         } else if (menu == 4) {
             tampilkanRiwayatPeriksa();
+            tampilkanRiwayatPembelianObat();
+        } else if (menu == 5) {
+            System.out.println("Anda telah keluar dari program");
         }
         System.out.print("Apakah anda ingin kembali ke menu utama : ");
         System.out.println("(Y/T)");
@@ -226,21 +224,24 @@ public class medis {
     }
 
 
-
     public static double bobat(Scanner sc) {
-        int[] obatYangDibeliIndex = new int[10]; 
+        int[] obatYangDibeliIndex = new int[10];
         double totalHarga = 0;
         int count = 0;
-        while (true) {
+        boolean check = false;
+        
+        while (!check) {
             System.out.println("\nPilih obat yang anda ingin beli: ");
             for (int i = 0; i < namaObat.length; i++) {
                 System.out.println(i + 1 + ". " + namaObat[i] + " - Rp" + hargaObat[i]);
             }
             int obatIndex = sc.nextInt();
+            
             if (obatIndex >= 1 && obatIndex <= namaObat.length) {
                 double harga = hargaObat[obatIndex - 1];
                 System.out.println("Anda memilih: " + namaObat[obatIndex - 1]);
                 System.out.println("Harga: Rp" + harga);
+        
                 obatYangDibeliIndex[count] = obatIndex - 1;
                 totalHarga += harga;
                 count++;
@@ -249,17 +250,36 @@ public class medis {
             }
             
             System.out.println("Tambah obat yang ingin dibeli? (y/t)");
-            if (sc.next().equalsIgnoreCase("t")) {
-                break;
+            String lanjut = sc.next();
+            if (lanjut.equalsIgnoreCase("t")) {
+                check = true;
             }
         }
+        
         System.out.println("\nObat yang dibeli:");
         for (int i = 0; i < count; i++) {
             System.out.println(namaObat[obatYangDibeliIndex[i]] + " - Rp" + hargaObat[obatYangDibeliIndex[i]]);
         }
         System.out.println("Total harga obat: Rp" + totalHarga);
+        for (int i = 0; i < obatYangDibeliIndex.length; i++) {
+            if (obatYangDibeliIndex[i] != 0) {
+                String infoObat = namaObat[obatYangDibeliIndex[i]] + " - Rp" + hargaObat[obatYangDibeliIndex[i]];
+                for (int j = 0; j < riwayatObat.length; j++) {
+                    if (riwayatObat[j] == null) {
+                        riwayatObat[j] = infoObat;
+                        jumlahRiwayatObat++; 
+                        break;
+                    }
+                }
+            }
+        }
         return totalHarga;
     }
+    
+        
+    
+    
+    
 
     public static void informasi(Scanner sc) {    
         System.out.println("Informasi penyakit dan obatnya: ");
@@ -299,6 +319,21 @@ public class medis {
 
     }
 
+    public static void tampilkanRiwayatPembelianObat() {
+        if (jumlahRiwayatObat == 0) {
+            System.out.println("Belum ada riwayat pembelian obat.");
+        } else {
+            System.out.println("\nRiwayat Pembelian Obat:");
+            for (String infoObat : riwayatObat) {
+                if (infoObat != null) {
+                    System.out.println(infoObat);
+                    System.out.println("");
+                }
+            }
+        }
+    }
+    
+
     public static void tampilkanRiwayatPeriksa() {
         System.out.println("\nRiwayat Periksa:");
         for (String info : riwayatPeriksa) {
@@ -308,5 +343,4 @@ public class medis {
             }
         }
     }
-   
 }
